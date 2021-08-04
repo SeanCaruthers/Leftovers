@@ -8,14 +8,20 @@ class PostTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: Text(post.imageUrl),
-        trailing: CircleAvatar(
-          child: Text(
-            post.itemCount.toString(),
-          ),
-        ),
+        leading: postDate(),
+        trailing: leftoverCount(),
         onTap: () {
           goToDetailScreen(context, post);
         });
+  }
+
+  Widget postDate() {
+    return Text(post.dateString);
+  }
+
+  Widget leftoverCount() {
+    return CircleAvatar(
+      child: Text(post.leftoverCount.toString()),
+    );
   }
 }
