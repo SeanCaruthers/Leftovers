@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:leftovers/screens/list_screen.dart' show ListScreen;
+import 'package:leftovers/helpers/navigation.dart' show goToPreviousScreen;
 
 class NewEntryScreen extends StatelessWidget {
   const NewEntryScreen({Key? key}) : super(key: key);
@@ -8,6 +8,12 @@ class NewEntryScreen extends StatelessWidget {
   static const routeName = "newEntry";
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Container(
+        child: ElevatedButton(
+      onPressed: () {
+        goToPreviousScreen(context);
+      },
+      child: Text("back"),
+    ));
   }
 }

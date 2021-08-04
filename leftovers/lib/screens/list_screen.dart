@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:leftovers/helpers/navigation.dart' show goToNewEntryScreen;
 
-import 'package:leftovers/widgets/lists/post_list.dart' show PostList;
+import 'package:leftovers/widgets/repr/post/lists/post_list.dart' show PostList;
 
 class ListScreen extends StatelessWidget {
   const ListScreen({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class ListScreen extends StatelessWidget {
             onPressed: () {
               goToNewEntryScreen(context);
             },
-            child: Icon(Icons.camera),
+            child: Icon(Icons.photo_camera),
           );
         },
       ),
@@ -35,9 +35,8 @@ class ListScreen extends StatelessWidget {
     return Text('${title} - ${num_leftovers()}');
   }
 
-  String num_leftovers() {
+  int num_leftovers() {
     #TODO;
-    // return the total number of leftovers tracked in the app
-    return "Not implemented!";
+    return 5;
   }
 }

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:leftovers/config/navigation/routes.dart' as routes;
 
 class App extends StatelessWidget {
+  final firestore;
+
+  const App({required this.firestore});
   // This widget is the root of your application.
 
   @override
