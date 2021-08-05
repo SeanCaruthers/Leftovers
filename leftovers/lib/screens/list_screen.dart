@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:leftovers/helpers/navigation.dart' show goToNewEntryScreen;
+import 'package:leftovers/config/strings.dart' show appTitle;
+
+import 'package:leftovers/widgets/inputs/buttons/list_screen_fab.dart'
+    show ListScreenFab;
+
+import 'package:leftovers/widgets/layout/main_layout.dart' show MainLayout;
 
 import 'package:leftovers/widgets/repr/post/lists/post_list.dart' show PostList;
 
@@ -8,31 +13,14 @@ class ListScreen extends StatelessWidget {
   const ListScreen({Key? key}) : super(key: key);
 
   static const String routeName = 'list';
-  static const title = "Leftovers";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: getTitle(),
-      ),
+    return MainLayout(
+      title: Text('${appTitle} - ${num_leftovers()}'),
       body: PostList(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Builder(
-        builder: (context) {
-          return FloatingActionButton(
-            onPressed: () {
-              goToNewEntryScreen(context);
-            },
-            child: Icon(Icons.photo_camera),
-          );
-        },
-      ),
+      floatingActionButton: ListScreenFab(),
     );
-  }
-
-  Text getTitle() {
-    return Text('${title} - ${num_leftovers()}');
   }
 
   int num_leftovers() {

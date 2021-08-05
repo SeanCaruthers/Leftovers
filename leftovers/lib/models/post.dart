@@ -17,8 +17,6 @@ class Post {
   });
 
   factory Post.fromQueryJson(dynamic queryJson) {
-    print(queryJson["date"].toString());
-    print(queryJson["date"].toDate().toString());
     return Post(
       imageUrl: queryJson["imageUrl"],
       leftoverCount: queryJson["leftoverCount"],

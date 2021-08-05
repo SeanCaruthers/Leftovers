@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leftovers/helpers/navigation.dart';
+import 'package:leftovers/widgets/repr/post/attrs/post_date.dart';
+import 'package:leftovers/widgets/repr/post/attrs/post_leftover_count.dart';
 
 class PostTile extends StatelessWidget {
   final post;
@@ -8,20 +10,14 @@ class PostTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: postDate(),
-        trailing: leftoverCount(),
+        leading: PostDate(
+          date: post.date,
+        ),
+        trailing: PostLeftoverCount(
+          leftoverCount: post.leftoverCount,
+        ),
         onTap: () {
           goToDetailScreen(context, post);
         });
-  }
-
-  Widget postDate() {
-    return Text(post.dateString);
-  }
-
-  Widget leftoverCount() {
-    return CircleAvatar(
-      child: Text(post.leftoverCount.toString()),
-    );
   }
 }

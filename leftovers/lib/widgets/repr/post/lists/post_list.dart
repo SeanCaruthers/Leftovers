@@ -13,8 +13,15 @@ class PostList extends StatefulWidget {
 }
 
 class _PostListState extends State<PostList> {
-  dynamic postStream =
-      FirebaseFirestore.instance.collection('posts').snapshots();
+  dynamic postStream = FirebaseFirestore.instance
+      .collection(
+        'posts',
+      )
+      .orderBy(
+        'date',
+        descending: true,
+      )
+      .snapshots();
 
   @override
   Widget build(BuildContext context) {
