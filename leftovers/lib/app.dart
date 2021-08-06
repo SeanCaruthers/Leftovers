@@ -7,13 +7,14 @@ import 'package:leftovers/config/navigation/routes.dart' as routes;
 class App extends StatelessWidget {
   final firestore;
 
-  const App({required this.firestore});
-  // This widget is the root of your application.
+  const App({
+    required this.firestore,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Leftovers',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

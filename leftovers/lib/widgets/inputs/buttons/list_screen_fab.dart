@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:leftovers/helpers/navigation.dart' show goToNewEntryScreen;
+import 'package:leftovers/helpers/navigation.dart' show goToImageInputScreen;
 
 class ListScreenFab extends StatelessWidget {
   ListScreenFab({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class ListScreenFab extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        goToNewEntryScreen(context);
+        goToImageInputScreen(context);
       },
       child: Icon(Icons.photo_camera),
     );

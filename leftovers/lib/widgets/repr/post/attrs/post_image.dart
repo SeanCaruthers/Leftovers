@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leftovers/widgets/displays/loading_spinner.dart'
+    show LoadingSpinner;
 
 class PostImage extends StatelessWidget {
   final imageUrl;
@@ -10,7 +12,7 @@ class PostImage extends StatelessWidget {
       imageUrl,
       loadingBuilder: (BuildContext context, Widget child,
               ImageChunkEvent? loadingProgress) =>
-          loadingProgress == null ? child : CircularProgressIndicator(),
+          loadingProgress == null ? child : LoadingSpinner(),
     );
   }
 }

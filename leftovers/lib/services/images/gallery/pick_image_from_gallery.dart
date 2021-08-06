@@ -4,7 +4,7 @@ Future<String> getImagePath() async {
   final picker = ImagePicker();
 
   final pickedFile = await picker.pickImage(
-    source: ImageSource.camera,
+    source: ImageSource.gallery,
   );
   return pickedFile!.path;
 }
