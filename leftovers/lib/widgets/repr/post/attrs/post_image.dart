@@ -8,11 +8,17 @@ class PostImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      imageUrl,
-      loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent? loadingProgress) =>
-          loadingProgress == null ? child : LoadingSpinner(),
+    return Semantics(
+      image: true,
+      label: "an image of the leftovers",
+      child: Image.network(
+        imageUrl,
+        loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) =>
+            loadingProgress == null
+                ? child
+                : LoadingSpinner(indicated: "the image is being loaded"),
+      ),
     );
   }
 }

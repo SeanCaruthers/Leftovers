@@ -14,11 +14,8 @@ class ImageInputScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainLayout(
       title: Text('$appTitle'),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          OpenImageSource(),
-        ],
+      body: Center(
+        child: OpenImageSource(),
       ),
     );
   }

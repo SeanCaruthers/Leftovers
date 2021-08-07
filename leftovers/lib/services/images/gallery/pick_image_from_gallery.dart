@@ -1,6 +1,6 @@
 import 'package:image_picker/image_picker.dart';
 
-Future<String> getImagePath() async {
+Future<String> selectImageFromGallery() async {
   final picker = ImagePicker();
 
   final pickedFile = await picker.pickImage(

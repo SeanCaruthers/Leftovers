@@ -13,7 +13,7 @@ import 'package:leftovers/services/images/camera/take_picture_screen.dart'
     show TakePictureScreen;
 
 void goToNewEntryScreen(BuildContext context, String imagePath) {
-  Navigator.of(context).pushNamed(
+  Navigator.of(context).popAndPushNamed(
     NewEntryScreen.routeName,
     arguments: imagePath,
   );
@@ -24,7 +24,7 @@ void goToImageInputScreen(BuildContext context) {
 }
 
 void goToTakePictureScreen(BuildContext context) {
-  Navigator.of(context).pushNamed(TakePictureScreen.routeName);
+  Navigator.of(context).popAndPushNamed(TakePictureScreen.routeName);
 }
 
 void goToDetailScreen(BuildContext context, Post post) {

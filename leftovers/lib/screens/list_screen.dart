@@ -9,22 +9,29 @@ import 'package:leftovers/widgets/layout/main_layout.dart' show MainLayout;
 
 import 'package:leftovers/widgets/repr/post/lists/post_list.dart' show PostList;
 
-class ListScreen extends StatelessWidget {
+class ListScreen extends StatefulWidget {
   const ListScreen({Key? key}) : super(key: key);
 
   static const String routeName = 'list';
 
   @override
-  Widget build(BuildContext context) {
-    return MainLayout(
-      title: Text('${appTitle} - ${num_leftovers()}'),
-      body: PostList(),
-      floatingActionButton: ListScreenFab(),
-    );
+  _ListScreenState createState() => _ListScreenState();
+}
+
+class _ListScreenState extends State<ListScreen> {
+  int num_leftovers = 0;
+
+  updateLeftovers(int value) {
+    num_leftovers += value;
+    setState(() => {});
   }
 
-  int num_leftovers() {
-    #TODO;
-    return 5;
+  @override
+  Widget build(BuildContext context) {
+    return MainLayout(
+      title: Text('${appTitle} - ${num_leftovers}'),
+      body: PostList(updateLeftovers: updateLeftovers),
+      floatingActionButton: ListScreenFab(),
+    );
   }
 }

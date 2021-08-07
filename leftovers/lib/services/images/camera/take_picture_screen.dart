@@ -25,8 +25,7 @@ class TakePictureScreen extends StatefulWidget {
 }
 
 class _TakePictureScreenState extends State<TakePictureScreen> {
-  late CameraController controller;
-  late Future<void> _initialized;
+  CameraController? controller;
 
   @override
   void initState() {
@@ -36,7 +35,7 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
 
   @override
   void dispose() {
-    controller.dispose();
+    controller?.dispose();
     super.dispose();
   }
 
@@ -49,33 +48,26 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
       resolution,
     );
 
-    _initialized = controller.initialize();
+    await controller!.initialize();
+    if (!mounted) {
+      return;
+    }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return MainLayout(
       title: Text('$appTitle'),
-      body: FutureBuilder(
-        future: _initialized,
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-            case ConnectionState.active:
-              return const LoadingSpinner();
-            case ConnectionState.done:
-              return CameraView();
-            case ConnectionState.none:
-              return Placeholder();
-          }
-        },
-      ),
+      body: controller?.value.isInitialized != null
+          ? CameraView()
+          : LoadingSpinner(indicated: 'the app is waiting to use the camera'),
       floatingActionButton: TakePictureButton(),
     );
   }
 
   Widget CameraView() {
-    return CameraPreview(controller);
+    return CameraPreview(controller!);
   }
 
   Widget? TakePictureButton() {
@@ -87,7 +79,7 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
 
   Future<void> takePicture() async {
     try {
-      final imagePath = (await controller.takePicture()).path;
+      final imagePath = (await controller!.takePicture()).path;
       goToNewEntryScreen(context, imagePath);
     } catch (err) {
       print(err);

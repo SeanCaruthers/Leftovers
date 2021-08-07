@@ -1,3 +1,4 @@
+
 class Post {
   final String imageUrl;
 
@@ -17,6 +18,7 @@ class Post {
   });
 
   factory Post.fromQueryJson(dynamic queryJson) {
+
     return Post(
       imageUrl: queryJson["imageUrl"],
       leftoverCount: queryJson["leftoverCount"],

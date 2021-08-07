@@ -8,11 +8,16 @@ class OpenCameraPrompt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(
-          onTap: () async {
-            goToTakePictureScreen(context);
-          },
-          child: Icon(Icons.photo_camera),
+        Semantics(
+          image: true,
+          button: true,
+          label: "a photo icon that opens the phone's camera",
+          child: GestureDetector(
+            onTap: () async {
+              goToTakePictureScreen(context);
+            },
+            child: Icon(Icons.photo_camera),
+          ),
         ),
         Text("Take Photo"),
       ],

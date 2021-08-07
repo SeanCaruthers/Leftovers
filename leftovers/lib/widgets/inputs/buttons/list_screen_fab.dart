@@ -7,11 +7,19 @@ class ListScreenFab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
-        goToImageInputScreen(context);
-      },
-      child: Icon(Icons.photo_camera),
+    return Semantics(
+      button: true,
+      enabled: true,
+      label: "Start making a new post by clicking here.",
+      child: FloatingActionButton(
+        onPressed: () {
+          goToImageInputScreen(context);
+        },
+        child: Semantics(
+            image: true,
+            label: "a camera icon",
+            child: Icon(Icons.photo_camera)),
+      ),
     );
   }
 }
